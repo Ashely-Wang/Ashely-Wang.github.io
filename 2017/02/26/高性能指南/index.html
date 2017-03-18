@@ -84,25 +84,34 @@
 
 
 
-<meta name="description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="description" content="高性能指南,减小页面加载时间:
+规则1：　　减少HTTP请求　　　　　　　　　　 1. 图片地图（map）
+　　　　　　　　 2. CSS精灵　　　　　　　　 3. 内联图片　
+　　　　　　　　 4. 合并脚本和样式表
+规则2：　　使用内容发布网络（CDN）
+①当用户点击网站页面上的内容URL，经过本地DNS系统解析，DNS系统会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。
+②C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsonp详解">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/jsonp/index.html">
+<meta property="og:title" content="高性能指南">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/高性能指南/index.html">
 <meta property="og:site_name" content="唯知之也">
-<meta property="og:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
-<meta property="og:updated_time" content="2017-03-12T05:10:21.297Z">
+<meta property="og:description" content="高性能指南,减小页面加载时间:
+规则1：　　减少HTTP请求　　　　　　　　　　 1. 图片地图（map）
+　　　　　　　　 2. CSS精灵　　　　　　　　 3. 内联图片　
+　　　　　　　　 4. 合并脚本和样式表
+规则2：　　使用内容发布网络（CDN）
+①当用户点击网站页面上的内容URL，经过本地DNS系统解析，DNS系统会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。
+②C">
+<meta property="og:updated_time" content="2017-03-18T06:40:38.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsonp详解">
-<meta name="twitter:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="twitter:title" content="高性能指南">
+<meta name="twitter:description" content="高性能指南,减小页面加载时间:
+规则1：　　减少HTTP请求　　　　　　　　　　 1. 图片地图（map）
+　　　　　　　　 2. CSS精灵　　　　　　　　 3. 内联图片　
+　　　　　　　　 4. 合并脚本和样式表
+规则2：　　使用内容发布网络（CDN）
+①当用户点击网站页面上的内容URL，经过本地DNS系统解析，DNS系统会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。
+②C">
 
 
 
@@ -130,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/jsonp/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/26/高性能指南/"/>
 
 
 
 
 
-  <title> jsonp详解 | 唯知之也 </title>
+  <title> 高性能指南 | 唯知之也 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -249,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/jsonp/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/26/高性能指南/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="一只大肉包">
@@ -273,7 +282,7 @@
             
             
               
-                jsonp详解
+                高性能指南
               
             
           </h1>
@@ -288,8 +297,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T14:18:35+08:00">
-                2017-02-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-26T06:40:25+08:00">
+                2017-02-26
               </time>
             
 
@@ -311,8 +320,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsonp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsonp</span>
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
                   </a>
                 </span>
 
@@ -346,68 +355,20 @@
       
 
       
-        <h2 id="Jsop："><a href="#Jsop：" class="headerlink" title="Jsop："></a>Jsop：</h2><ul>
-<li>1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；</li>
-<li>2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；</li>
-<li>3、于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；</li>
-<li>4、恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
-<li>5、这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
-<li>6、客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
-<li><p>7、为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    // 得到航班信息查询结果后的回调函数
-    var flightHandler = function(data){
-        alert(&apos;你查询的航班结果是：票价 &apos; + data.price + &apos; 元，&apos; + &apos;余票 &apos; + data.tickets + &apos; 张。&apos;);
-    };
-    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）在url里写上回调函数的名字 这样才能知道把数据返回给谁。
-    var url = &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler&quot;;
-    // 创建script标签，设置其属性
-    var script = document.createElement(&apos;script&apos;);
-    script.setAttribute(&apos;src&apos;, url);
-    // 把script标签加入head，此时调用开始
-    document.getElementsByTagName(&apos;head&apos;)[0].appendChild(script); 
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h1 id="jsonp封装在jquery里"><a href="#jsonp封装在jquery里" class="headerlink" title="jsonp封装在jquery里"></a>jsonp封装在jquery里</h1><pre><code>&lt;!DOCTYPE html&gt;
- &lt;html&gt;
- &lt;head&gt;
-     &lt;title&gt;Untitled Page&lt;/title&gt;
-      &lt;script type=&quot;text/javascript&quot; src=jquery.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script type=&quot;text/javascript&quot;&gt;
-     jQuery(document).ready(function(){ 
-        $.ajax({
-             type: &quot;get&quot;,
-             async: false,
-             url: &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&quot;,
-             dataType: &quot;jsonp&quot;,
-             jsonp: &quot;callback&quot;,//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-             jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写&quot;?&quot;，jQuery会自动为你处理数据
-             success: function(json){
-                 alert(&apos;您查询到航班信息：票价： &apos; + json.price + &apos; 元，余票： &apos; + json.tickets + &apos; 张。&apos;);
-             },
-             error: function(){
-                 alert(&apos;fail&apos;);
-             }
-         });
-     });
-     &lt;/script&gt;
-     &lt;/head&gt;
-  &lt;body&gt;
-  &lt;/body&gt;
- &lt;/html&gt;
-</code></pre></li>
-<li>jquery在处理jsonp类型的ajax时自动帮你生成回调函数并把数据取出来供success属性方法来调用</li>
-<li>ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加<script>标签来调用服务器提供的js脚本。</li>
-<li>其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。</li>
+        <p>高性能指南,减小页面加载时间:</p>
+<h4 id="规则1：-减少HTTP请求"><a href="#规则1：-减少HTTP请求" class="headerlink" title="规则1：　　减少HTTP请求　　"></a>规则1：　　减少HTTP请求　　</h4><p>　　　　　　　　<em> 1. 图片地图（map）
+　　　　　　　　</em> 2. CSS精灵<br>　　　　　　　　<em> 3. 内联图片　
+　　　　　　　　</em> 4. 合并脚本和样式表</p>
+<h4 id="规则2：-使用内容发布网络（CDN）"><a href="#规则2：-使用内容发布网络（CDN）" class="headerlink" title="规则2：　　使用内容发布网络（CDN）"></a>规则2：　　使用内容发布网络（CDN）</h4><ul>
+<li>①当用户点击网站页面上的内容URL，经过本地DNS系统解析，DNS系统会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。</li>
+<li>②CDN的DNS服务器将CDN的全局负载均衡设备IP地址返回用户。</li>
+<li>③用户向CDN的全局负载均衡设备发起内容URL访问请求。</li>
+<li>④CDN全局负载均衡设备根据用户IP地址，以及用户请求的内容URL，选择一台用户所属区域的区域负载均衡设备，告诉用户向这台设备发起请求。</li>
+<li>⑤区域负载均衡设备会为用户选择一台合适的缓存服务器提供服务，选择的依据包括：根据用户IP地址，判断哪一台服务器距用户最近；根据用户所请求的URL中携带的内容名称，判断哪一台服务器上有用户所需内容；查询各个服务器当前的负载情况，判断哪一台服务器尚有服务能力。基于以上这些条件的综合分析之后，区域负载均衡设备会向全局负载均衡设备返回一台缓存服务器的IP地址。</li>
+<li>⑥全局负载均衡设备把服务器的IP地址返回给用户。</li>
+<li>⑦用户向缓存服务器发起请求，缓存服务器响应用户请求，将用户所需内容传送到用户终端。如果这台缓存服务器上并没有用户想要的内容，而区域均衡设备依然将它分配给了用户，那么这台服务器就要向它的上一级缓存服务器请求内容，直至追溯到网站的源服务器将内容拉到本地。DNS服务器根据用户IP地址，将域名解析成相应节点的缓存服务器IP地址，实现用户就近访问。使用CDN服务的网站，只需将其域名解析权交给CDN的GSLB设备，将需要分发的内容注入CDN，就可以实现内容加速了</li>
 </ul>
-</script></li></ul>
+<h4 id="规则3：-添加Expires头"><a href="#规则3：-添加Expires头" class="headerlink" title="规则3：　　添加Expires头"></a>规则3：　　添加Expires头</h4><h4 id="规则4：-压缩组件-gzip"><a href="#规则4：-压缩组件-gzip" class="headerlink" title="规则4：　　压缩组件(gzip)"></a>规则4：　　压缩组件(gzip)</h4><h4 id="规则5：-将样式表放在顶部（使用link标签将样式表放在文档head中）"><a href="#规则5：-将样式表放在顶部（使用link标签将样式表放在文档head中）" class="headerlink" title="规则5：　　将样式表放在顶部（使用link标签将样式表放在文档head中）"></a>规则5：　　将样式表放在顶部（使用link标签将样式表放在文档head中）</h4><h4 id="规则6：-将脚本放在底部"><a href="#规则6：-将脚本放在底部" class="headerlink" title="规则6：　　将脚本放在底部"></a>规则6：　　将脚本放在底部</h4><h4 id="规则7：-避免CSS表达式"><a href="#规则7：-避免CSS表达式" class="headerlink" title="规则7：　　避免CSS表达式　　"></a>规则7：　　避免CSS表达式　　</h4><h4 id="规则8：-使用外部JavaScript和CSS"><a href="#规则8：-使用外部JavaScript和CSS" class="headerlink" title="规则8：　　使用外部JavaScript和CSS"></a>规则8：　　使用外部JavaScript和CSS</h4><h4 id="规则9：-减少DNS查找"><a href="#规则9：-减少DNS查找" class="headerlink" title="规则9：　　减少DNS查找"></a>规则9：　　减少DNS查找</h4><h4 id="规则10：-精简JavaScript"><a href="#规则10：-精简JavaScript" class="headerlink" title="规则10：　 精简JavaScript"></a>规则10：　 精简JavaScript</h4><h4 id="规则11：-避免重定向"><a href="#规则11：-避免重定向" class="headerlink" title="规则11：　 避免重定向"></a>规则11：　 避免重定向</h4><h4 id="规则12：-删除重复脚本"><a href="#规则12：-删除重复脚本" class="headerlink" title="规则12： 　删除重复脚本"></a>规则12： 　删除重复脚本</h4><h4 id="规则13：-配置ETag"><a href="#规则13：-配置ETag" class="headerlink" title="规则13：　 配置ETag　"></a>规则13：　 配置ETag　</h4><h4 id="规则14：-使Ajax可缓存"><a href="#规则14：-使Ajax可缓存" class="headerlink" title="规则14：　 使Ajax可缓存"></a>规则14：　 使Ajax可缓存</h4>
       
     </div>
 
@@ -433,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/23/事件委托/" rel="next" title="js事件委托&jquery事件委托">
-                <i class="fa fa-chevron-left"></i> js事件委托&jquery事件委托
+              <a href="/2017/02/24/jsonp/" rel="next" title="jsonp详解">
+                <i class="fa fa-chevron-left"></i> jsonp详解
               </a>
             
           </div>
@@ -443,8 +404,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/26/高性能指南/" rel="prev" title="高性能指南">
-                高性能指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/04/浏览器问题/" rel="prev" title="浏览器内部工作原理">
+                浏览器内部工作原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsop："><span class="nav-text">Jsop：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsonp封装在jquery里"><span class="nav-text">jsonp封装在jquery里</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则1：-减少HTTP请求"><span class="nav-text">规则1：　　减少HTTP请求　　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则2：-使用内容发布网络（CDN）"><span class="nav-text">规则2：　　使用内容发布网络（CDN）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则3：-添加Expires头"><span class="nav-text">规则3：　　添加Expires头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则4：-压缩组件-gzip"><span class="nav-text">规则4：　　压缩组件(gzip)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则5：-将样式表放在顶部（使用link标签将样式表放在文档head中）"><span class="nav-text">规则5：　　将样式表放在顶部（使用link标签将样式表放在文档head中）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则6：-将脚本放在底部"><span class="nav-text">规则6：　　将脚本放在底部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则7：-避免CSS表达式"><span class="nav-text">规则7：　　避免CSS表达式　　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则8：-使用外部JavaScript和CSS"><span class="nav-text">规则8：　　使用外部JavaScript和CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则9：-减少DNS查找"><span class="nav-text">规则9：　　减少DNS查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则10：-精简JavaScript"><span class="nav-text">规则10：　 精简JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则11：-避免重定向"><span class="nav-text">规则11：　 避免重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则12：-删除重复脚本"><span class="nav-text">规则12： 　删除重复脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则13：-配置ETag"><span class="nav-text">规则13：　 配置ETag　</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则14：-使Ajax可缓存"><span class="nav-text">规则14：　 使Ajax可缓存</span></a></li></ol></div>
             
 
           </div>

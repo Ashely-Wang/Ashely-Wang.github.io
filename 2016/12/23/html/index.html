@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="description" content="按钮
+ 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。
+ 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。
+ 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsonp详解">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/jsonp/index.html">
+<meta property="og:title" content="js事件委托&jquery事件委托">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/html/index.html">
 <meta property="og:site_name" content="唯知之也">
-<meta property="og:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
-<meta property="og:updated_time" content="2017-03-12T05:10:21.297Z">
+<meta property="og:description" content="按钮
+ 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。
+ 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。
+ 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容">
+<meta property="og:updated_time" content="2017-03-18T06:02:29.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsonp详解">
-<meta name="twitter:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="twitter:title" content="js事件委托&jquery事件委托">
+<meta name="twitter:description" content="按钮
+ 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。
+ 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。
+ 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/jsonp/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/23/html/"/>
 
 
 
 
 
-  <title> jsonp详解 | 唯知之也 </title>
+  <title> js事件委托&jquery事件委托 | 唯知之也 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -249,7 +249,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/jsonp/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/html/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="一只大肉包">
@@ -273,7 +273,7 @@
             
             
               
-                jsonp详解
+                js事件委托&jquery事件委托
               
             
           </h1>
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T14:18:35+08:00">
-                2017-02-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-23T22:15:25+08:00">
+                2016-12-23
               </time>
             
 
@@ -311,8 +311,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsonp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsonp</span>
+                  <a href="/categories/html/" itemprop="url" rel="index">
+                    <span itemprop="name">html</span>
                   </a>
                 </span>
 
@@ -346,68 +346,39 @@
       
 
       
-        <h2 id="Jsop："><a href="#Jsop：" class="headerlink" title="Jsop："></a>Jsop：</h2><ul>
-<li>1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；</li>
-<li>2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；</li>
-<li>3、于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；</li>
-<li>4、恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
-<li>5、这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
-<li>6、客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
-<li><p>7、为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    // 得到航班信息查询结果后的回调函数
-    var flightHandler = function(data){
-        alert(&apos;你查询的航班结果是：票价 &apos; + data.price + &apos; 元，&apos; + &apos;余票 &apos; + data.tickets + &apos; 张。&apos;);
-    };
-    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）在url里写上回调函数的名字 这样才能知道把数据返回给谁。
-    var url = &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler&quot;;
-    // 创建script标签，设置其属性
-    var script = document.createElement(&apos;script&apos;);
-    script.setAttribute(&apos;src&apos;, url);
-    // 把script标签加入head，此时调用开始
-    document.getElementsByTagName(&apos;head&apos;)[0].appendChild(script); 
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h1 id="jsonp封装在jquery里"><a href="#jsonp封装在jquery里" class="headerlink" title="jsonp封装在jquery里"></a>jsonp封装在jquery里</h1><pre><code>&lt;!DOCTYPE html&gt;
- &lt;html&gt;
- &lt;head&gt;
-     &lt;title&gt;Untitled Page&lt;/title&gt;
-      &lt;script type=&quot;text/javascript&quot; src=jquery.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script type=&quot;text/javascript&quot;&gt;
-     jQuery(document).ready(function(){ 
-        $.ajax({
-             type: &quot;get&quot;,
-             async: false,
-             url: &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&quot;,
-             dataType: &quot;jsonp&quot;,
-             jsonp: &quot;callback&quot;,//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-             jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写&quot;?&quot;，jQuery会自动为你处理数据
-             success: function(json){
-                 alert(&apos;您查询到航班信息：票价： &apos; + json.price + &apos; 元，余票： &apos; + json.tickets + &apos; 张。&apos;);
-             },
-             error: function(){
-                 alert(&apos;fail&apos;);
-             }
-         });
-     });
-     &lt;/script&gt;
-     &lt;/head&gt;
-  &lt;body&gt;
-  &lt;/body&gt;
- &lt;/html&gt;
-</code></pre></li>
-<li>jquery在处理jsonp类型的ajax时自动帮你生成回调函数并把数据取出来供success属性方法来调用</li>
-<li>ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加<script>标签来调用服务器提供的js脚本。</li>
-<li>其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。</li>
+        <h4 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h4><ul>
+<li><input type="button"> 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。</li>
+<li><input type="submit"> 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。</li>
+<li><button> 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容问题。</button></li>
+<li>其他标签，例如 a, img, span, div，然后用图片把它伪装成一个按钮。<ul>
+<li>注意a标签 ： 链接的 onclick 事件被先执行，其次是 href 属性下的动作（页面跳转，或 javascript 伪链接）；假设链接中同时存在 href 与 onclick，如果想让 href 属性下的动作不执行，onclick 必须得到一个 false 的返回值 ；如果页面过长有滚动条，且希望通过链接的 onclick 事件执行操作。应将它的 href 属性设为 javascript:void(0);，而不要是 #，这可以防止不必要的页面跳动；<h4 id="js动态生成标签"><a href="#js动态生成标签" class="headerlink" title="js动态生成标签"></a>js动态生成标签</h4></li>
 </ul>
-</script></li></ul>
+</li>
+<li>innerHTML</li>
+<li>creatElement() appendChild();</li>
+<li>如img标签 可以使用new Image()方法创建 </li>
+</ul>
+<h4 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h4><p>一个浏览器窗体可以通过几个页面的组合来显示。</p>
+<ul>
+<li>优点：<ul>
+<li>重载页面时不需要重载整个页面，只需要重载页面中的一个框架页(减少了数据的传输，加快了网页下载速度)。</li>
+<li>如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>不容易打印（目前只能实现分框架页面的打印，不能实现对frameset的打印）</li>
+<li>浏览器的后退按钮无效（只能针对实现当前光标所在页面的前进与后退，无法实现frameset整个页面的前进与后退）</li>
+<li>多框架的页面会增加服务器的http请求 现在基本上都是用Ajax来代替iframe，所以iframe已经渐渐的退出了前端开发。</li>
+</ul>
+</li>
+<li>js操作iframe<ul>
+<li>window.frames可以取到页面中的帧(iframe、frame等)，需要注意的是取到的是window对象，而不是HTMLElement。</li>
+<li>在父窗口中获取iframe中的元素：<br>//格式<br>var obj=document.getElementById(“iframe的name”).contentWindow;<br>//例子<br>var ifmObj=obj.document.getElementById(“btn”); ifmObj.click(); </li>
+<li>在iframe中获取父窗口的元素：<br>//格式<br>window.parent.document.getElementById(“父窗口的元素ID”).click();<br>//例子<br>window.parent.doucment.getElementById(“parentFrame”).click();</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -433,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/23/事件委托/" rel="next" title="js事件委托&jquery事件委托">
-                <i class="fa fa-chevron-left"></i> js事件委托&jquery事件委托
+              <a href="/2016/12/20/兼容问题/" rel="next" title="常见兼容问题">
+                <i class="fa fa-chevron-left"></i> 常见兼容问题
               </a>
             
           </div>
@@ -443,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/26/高性能指南/" rel="prev" title="高性能指南">
-                高性能指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/23/jquery/" rel="prev" title="jquery常用方法">
+                jquery常用方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsop："><span class="nav-text">Jsop：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsonp封装在jquery里"><span class="nav-text">jsonp封装在jquery里</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#按钮"><span class="nav-text">按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js动态生成标签"><span class="nav-text">js动态生成标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iframe"><span class="nav-text">iframe</span></a></li></ol></div>
             
 
           </div>

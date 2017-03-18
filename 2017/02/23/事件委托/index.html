@@ -84,25 +84,28 @@
 
 
 
-<meta name="description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="description" content="js中的事件委托
+高级程序设计 13.5.1 事件委托
+事件委托即是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。
+例：想让一个表格的所有单元格实现点击变色功能，比较蠢的方法是循环给每一个单元格添加绑定事件。这样需要多次dom操作，不利于性能，采用事件委托的话，可以如下：window.onload = function(){  
+　　var oTa = document.ge">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsonp详解">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/jsonp/index.html">
+<meta property="og:title" content="js事件委托&jquery事件委托">
+<meta property="og:url" content="http://yoursite.com/2017/02/23/事件委托/index.html">
 <meta property="og:site_name" content="唯知之也">
-<meta property="og:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
-<meta property="og:updated_time" content="2017-03-12T05:10:21.297Z">
+<meta property="og:description" content="js中的事件委托
+高级程序设计 13.5.1 事件委托
+事件委托即是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。
+例：想让一个表格的所有单元格实现点击变色功能，比较蠢的方法是循环给每一个单元格添加绑定事件。这样需要多次dom操作，不利于性能，采用事件委托的话，可以如下：window.onload = function(){  
+　　var oTa = document.ge">
+<meta property="og:updated_time" content="2017-03-18T04:56:46.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsonp详解">
-<meta name="twitter:description" content="Jsop：
-1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；
-2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；
-3、于是可以判断，当前阶段如果想通过纯web端（Acti">
+<meta name="twitter:title" content="js事件委托&jquery事件委托">
+<meta name="twitter:description" content="js中的事件委托
+高级程序设计 13.5.1 事件委托
+事件委托即是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。
+例：想让一个表格的所有单元格实现点击变色功能，比较蠢的方法是循环给每一个单元格添加绑定事件。这样需要多次dom操作，不利于性能，采用事件委托的话，可以如下：window.onload = function(){  
+　　var oTa = document.ge">
 
 
 
@@ -130,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/jsonp/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/23/事件委托/"/>
 
 
 
 
 
-  <title> jsonp详解 | 唯知之也 </title>
+  <title> js事件委托&jquery事件委托 | 唯知之也 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -249,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/jsonp/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/事件委托/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="一只大肉包">
@@ -273,7 +276,7 @@
             
             
               
-                jsonp详解
+                js事件委托&jquery事件委托
               
             
           </h1>
@@ -288,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T14:18:35+08:00">
-                2017-02-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-23T12:32:25+08:00">
+                2017-02-23
               </time>
             
 
@@ -311,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsonp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsonp</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -346,68 +349,86 @@
       
 
       
-        <h2 id="Jsop："><a href="#Jsop：" class="headerlink" title="Jsop："></a>Jsop：</h2><ul>
-<li>1、一个众所周知的问题，Ajax直接请求普通文件存在跨域无权限访问的问题，甭管你是静态页面、动态网页、web服务、WCF，只要是跨域请求，一律不准；</li>
-<li>2、不过我们又发现，Web页面上调用js文件时则不受是否跨域的影响（不仅如此，我们还发现凡是拥有”src”这个属性的标签都拥有跨域的能力，比如script、img、iframe）；</li>
-<li>3、于是可以判断，当前阶段如果想通过纯web端（ActiveX控件、服务端代理、属于未来的HTML5之Websocket等方式不算）跨域访问数据就只有一种可能，那就是在远程服务器上设法把数据装进js格式的文件里，供客户端调用和进一步处理；</li>
-<li>4、恰巧我们已经知道有一种叫做JSON的纯字符数据格式可以简洁的描述复杂数据，更妙的是JSON还被js原生支持，所以在客户端几乎可以随心所欲的处理这种格式的数据；</li>
-<li>5、这样子解决方案就呼之欲出了，web客户端通过与调用脚本一模一样的方式，来调用跨域服务器上动态生成的js格式文件（一般以JSON为后缀），显而易见，服务器之所以要动态生成JSON文件，目的就在于把客户端需要的数据装入进去。</li>
-<li>6、客户端在对JSON文件调用成功之后，也就获得了自己所需的数据，剩下的就是按照自己需求进行处理和展现了，这种获取远程数据的方式看起来非常像AJAX，但其实并不一样。</li>
-<li><p>7、为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    // 得到航班信息查询结果后的回调函数
-    var flightHandler = function(data){
-        alert(&apos;你查询的航班结果是：票价 &apos; + data.price + &apos; 元，&apos; + &apos;余票 &apos; + data.tickets + &apos; 张。&apos;);
-    };
-    // 提供jsonp服务的url地址（不管是什么类型的地址，最终生成的返回值都是一段javascript代码）在url里写上回调函数的名字 这样才能知道把数据返回给谁。
-    var url = &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&amp;callback=flightHandler&quot;;
-    // 创建script标签，设置其属性
-    var script = document.createElement(&apos;script&apos;);
-    script.setAttribute(&apos;src&apos;, url);
-    // 把script标签加入head，此时调用开始
-    document.getElementsByTagName(&apos;head&apos;)[0].appendChild(script); 
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h1 id="jsonp封装在jquery里"><a href="#jsonp封装在jquery里" class="headerlink" title="jsonp封装在jquery里"></a>jsonp封装在jquery里</h1><pre><code>&lt;!DOCTYPE html&gt;
- &lt;html&gt;
- &lt;head&gt;
-     &lt;title&gt;Untitled Page&lt;/title&gt;
-      &lt;script type=&quot;text/javascript&quot; src=jquery.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script type=&quot;text/javascript&quot;&gt;
-     jQuery(document).ready(function(){ 
-        $.ajax({
-             type: &quot;get&quot;,
-             async: false,
-             url: &quot;http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&quot;,
-             dataType: &quot;jsonp&quot;,
-             jsonp: &quot;callback&quot;,//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-             jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写&quot;?&quot;，jQuery会自动为你处理数据
-             success: function(json){
-                 alert(&apos;您查询到航班信息：票价： &apos; + json.price + &apos; 元，余票： &apos; + json.tickets + &apos; 张。&apos;);
-             },
-             error: function(){
-                 alert(&apos;fail&apos;);
-             }
-         });
-     });
-     &lt;/script&gt;
-     &lt;/head&gt;
-  &lt;body&gt;
-  &lt;/body&gt;
- &lt;/html&gt;
+        <h3 id="js中的事件委托"><a href="#js中的事件委托" class="headerlink" title="js中的事件委托"></a>js中的事件委托</h3><ul>
+<li>高级程序设计 13.5.1 事件委托</li>
+<li>事件委托即是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。</li>
+<li>例：想让一个表格的所有单元格实现点击变色功能，比较蠢的方法是循环给每一个单元格添加绑定事件。这样需要多次dom操作，不利于性能，采用事件委托的话，可以如下：<pre><code>window.onload = function(){  
+　　var oTa = document.getElementById(&quot;myTable&quot;);  //事件添加到table上
+　　oTa.onclick = function(e){  
+　　　　var e = e || window.event;                    //处理兼容性  
+　　　　var target = e.target || e.srcElement;　　　  
+　　　　target.nodeName.toLowerCase() == &apos;td&apos; ? alert(&apos;我点中了table&apos;) ：(target.style.background = &apos;red&apos;);  //三元运算符进行判断  
+　　}  
+}  
 </code></pre></li>
-<li>jquery在处理jsonp类型的ajax时自动帮你生成回调函数并把数据取出来供success属性方法来调用</li>
-<li>ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加<script>标签来调用服务器提供的js脚本。</li>
-<li>其实ajax与jsonp的区别不在于是否跨域，ajax通过服务端代理一样可以实现跨域，jsonp本身也不排斥同域的数据的获取。</li>
+<li><p>如果每个不同的按钮都有不同的功能，可以使用switch case进行区分：</p>
+<pre><code>window.onload = function(){  
+            var myTable = document.getElementById(&quot;myTable&quot;);  
+            myTable.onclick = function (ev) {     
+                var ev = ev || window.event;  
+                var target = ev.target || ev.srcElement;  
+                if(target.nodeName.toLocaleLowerCase() == &apos;table&apos;){  
+                    switch(target.id){  
+                        case &apos;add&apos; :  
+                            alert(&apos;添加&apos;);  
+                            break;  
+                        case &apos;remove&apos; :  
+                            alert(&apos;删除&apos;);  
+                            break;  
+                        case &apos;move&apos; :  
+                            alert(&apos;移动&apos;);  
+                            break;  
+                        case &apos;select&apos; :  
+                            alert(&apos;选择&apos;);  
+                            break;  
+                    }  
+                }  
+            }  
+
+        } 
+</code></pre></li>
+<li><p>事件委托的另一个优点就是新增的节点也会被绑定上事件。</p>
+<h3 id="jquery中的事件委托"><a href="#jquery中的事件委托" class="headerlink" title="jquery中的事件委托"></a>jquery中的事件委托</h3><h4 id="jquery绑定事件的方式有五种："><a href="#jquery绑定事件的方式有五种：" class="headerlink" title="jquery绑定事件的方式有五种："></a>jquery绑定事件的方式有五种：</h4></li>
+<li>bind<ul>
+<li>.bind(events [,eventData], handler)</li>
+<li>不可以动态绑定事件</li>
 </ul>
-</script></li></ul>
+</li>
+<li>live   //已不太使用  被on代替 原理就是把click 事件绑定到祖先元素$(document)上，而只需要给$(document)绑 定一次即可</li>
+<li>delegate   //已不太使用 被on代替</li>
+<li>on<ul>
+<li>.on(events [,selector]  [,data], handler)</li>
+<li>可以动态绑定事件</li>
+<li>比bind事件多一个selector 这个参数是筛选出调用on方法的dom元素的子元素。比如$(‘ul’).on(‘click’, ‘li’, function(){console.log(‘click’);})就是筛选出ul下的li给其绑定click事件；</li>
+</ul>
+</li>
+<li>one 只触发一次 就解除绑定 <h4 id="解绑事件"><a href="#解绑事件" class="headerlink" title="解绑事件"></a>解绑事件</h4></li>
+<li>解绑on绑定的事件：<br>  //解绑所有点击事件<br>  $(“.unbindAllclick”).click(function(){  <pre><code>$(&quot;.demonstrate&quot;).off(&apos;click&apos;,&quot;ul li&quot;);  
+</code></pre>  })<br>  // 事件函数：可解绑指定事件函数的同类事件,第3个参数：事件函数 (不需要引号)<br>  $(“.unbindSpecifyclick”).click(function(){  <pre><code>$(&quot;.demonstrate&quot;).off(&apos;click&apos;,&quot;ul li&quot;,eventFunc);  
+</code></pre>  })<br>  // 命名空间：解绑同一命名空间中的多类（如click、mouseout等）事件,第1个参数可直接简写命名空间即可，或写成”click.namespace mouseout.namespace”全写形式<br>  $(“.unbindNamespace”).click(function(){  <pre><code>$(&quot;.demonstrate&quot;).off(&apos;.namespace&apos;,&quot;ul li&quot;);  
+</code></pre>  })  </li>
+<li>解绑bind绑定的事件：<br>  //解绑指定类型的绑定事件 可有多个，用空格隔开 不写函数名表示删除所有该类型的事件。<br>  $(selector).unbind(event,function) 例：<pre><code>$(document).ready(function(){
+  $(&quot;p&quot;).click(function(){
+    $(this).slideToggle();
+  });
+  $(&quot;button&quot;).click(function(){
+    $(&quot;p&quot;).unbind(&apos;click&apos;);
+  });
+});
+</code></pre>  //规定要删除的事件对象  用于对自身内部的事件取消绑定（比如当事件已被触发一定次数之后，删除事件处理程序）。<br>  $(selector).unbind(eventObj) 例：<pre><code>$(document).ready(function(){
+  var x=0;
+  $(&quot;p&quot;).click(function(e){
+    $(&quot;p&quot;).animate({fontSize:&quot;+=5px&quot;});
+    x++;
+    if (x&gt;=2)
+      {
+      $(this).unbind(e);
+      }
+  });
+});
+</code></pre></li>
+</ul>
+
       
     </div>
 
@@ -433,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/23/事件委托/" rel="next" title="js事件委托&jquery事件委托">
-                <i class="fa fa-chevron-left"></i> js事件委托&jquery事件委托
+              <a href="/2017/02/20/存储方式/" rel="next" title="cookie、 sessionStorage 、localStorage">
+                <i class="fa fa-chevron-left"></i> cookie、 sessionStorage 、localStorage
               </a>
             
           </div>
@@ -443,8 +464,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/26/高性能指南/" rel="prev" title="高性能指南">
-                高性能指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/24/jsonp/" rel="prev" title="jsonp详解">
+                jsonp详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsop："><span class="nav-text">Jsop：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsonp封装在jquery里"><span class="nav-text">jsonp封装在jquery里</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js中的事件委托"><span class="nav-text">js中的事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery中的事件委托"><span class="nav-text">jquery中的事件委托</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jquery绑定事件的方式有五种："><span class="nav-text">jquery绑定事件的方式有五种：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解绑事件"><span class="nav-text">解绑事件</span></a></li></ol></li></ol></div>
             
 
           </div>

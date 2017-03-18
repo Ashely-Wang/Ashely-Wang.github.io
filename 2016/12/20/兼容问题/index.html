@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="唯知之也">
 <meta property="og:description" content="css方面1 不同浏览器的标签默认的外补丁和内补丁不同  问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。2 IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。   给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
 3 几个img标签放">
-<meta property="og:updated_time" content="2017-03-11T10:20:43.742Z">
+<meta property="og:updated_time" content="2017-03-13T04:06:31.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见兼容问题">
 <meta name="twitter:description" content="css方面1 不同浏览器的标签默认的外补丁和内补丁不同  问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。2 IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。   给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
@@ -293,6 +293,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -321,6 +343,9 @@
         <h1 id="css方面"><a href="#css方面" class="headerlink" title="css方面"></a>css方面</h1><h2 id="1-不同浏览器的标签默认的外补丁和内补丁不同-问题症状：随便写几个标签，不加样式控制的情况下，各自的margin-和padding差异较大。"><a href="#1-不同浏览器的标签默认的外补丁和内补丁不同-问题症状：随便写几个标签，不加样式控制的情况下，各自的margin-和padding差异较大。" class="headerlink" title="1 不同浏览器的标签默认的外补丁和内补丁不同  问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。"></a>1 不同浏览器的标签默认的外补丁和内补丁不同  问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。</h2><h2 id="2-IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。"><a href="#2-IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。" class="headerlink" title="2 IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。"></a>2 IE8之前的浏览器都会给标签一个最小默认的行高的高度。即使你的标签是空的，这个标签的高度还是会达到默认的行高。</h2><p>   给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。</p>
 <h2 id="3-几个img标签放在一起的时候，有些浏览器会有默认的间距-用float是正道"><a href="#3-几个img标签放在一起的时候，有些浏览器会有默认的间距-用float是正道" class="headerlink" title="3 几个img标签放在一起的时候，有些浏览器会有默认的间距  用float是正道"></a>3 几个img标签放在一起的时候，有些浏览器会有默认的间距  用float是正道</h2><h2 id="4-CSS-HACK"><a href="#4-CSS-HACK" class="headerlink" title="4 CSS HACK:"></a>4 CSS HACK:</h2><p>CSS hack是通过在CSS样式中加入一些特殊的符号，让不同的浏览器识别不同的符号（什么样的浏览器识别什么样的符号是有标准的，<br>CSS hack就是让你记住这个标准），以达到应用不同的CSS样式的目的</p>
 <p>1.大部分特殊字符IE浏览器支持，其他主流浏览器firefox，chrome，opera，safari不支持 (opera可识别除外)。<br>2.\9    ：所有IE浏览器都支持<br>3._和-  ：仅IE6支持<br>4.*     ：IE6、E7支持<br>5.\0    ：IE8、IE9支持，opera部分支持<br>6.\9\0  ：IE8部分支持、IE9支持<br>7.\0\9  ：IE8、IE9支持</p>
+<ol>
+<li>@-moz-document url-prefix(){background-color:#00ff00;}/<em> 仅firefox 识别 </em>/<br>9.@media screen and (-webkit-min-device-pixel-ratio:0){background-color:#f1ee18}{} /<em>safari(Chrome) 有效 </em>/</li>
+</ol>
 <h2 id="5-IE6的常见问题："><a href="#5-IE6的常见问题：" class="headerlink" title="5.IE6的常见问题："></a>5.IE6的常见问题：</h2><h3 id="一、IE6双倍边距bug-例如“margin-left-10px”-在IE6中，该值就会被解析为20px。"><a href="#一、IE6双倍边距bug-例如“margin-left-10px”-在IE6中，该值就会被解析为20px。" class="headerlink" title="一、IE6双倍边距bug 例如“margin-left:10px” 在IE6中，该值就会被解析为20px。"></a>一、IE6双倍边距bug 例如“margin-left:10px” 在IE6中，该值就会被解析为20px。</h3><p>解决方案：需要在该元素中加入display:inline 或 display:block 明确其元素类型</p>
 <h3 id="二、IE6中3像素问题"><a href="#二、IE6中3像素问题" class="headerlink" title="二、IE6中3像素问题"></a>二、IE6中3像素问题</h3><p>当元素使用float浮动后，元素与相邻的元素之间会产生3px的间隙。<br>诡异的是如果右侧的容器没设置高度时3px的间隙在相邻容器的内部，当设定高度后又跑到容器的相反侧了。<br>解决方案：需要使布局在同一行的元素都加上float浮动。</p>
 <h3 id="三、IE6中奇数宽高的BUG"><a href="#三、IE6中奇数宽高的BUG" class="headerlink" title="三、IE6中奇数宽高的BUG"></a>三、IE6中奇数宽高的BUG</h3><p>在外部的相对定位div,内部一个绝对定位的div就产生了一个像素的偏移<br>解决方案：需要尽量将外部定位的div高宽写成偶数即可。</p>
@@ -329,9 +354,19 @@
 <h3 id="六、重复文字的BUG在某些比较复杂的排版中，有时候浮动元素的最后一些字符会出现在clear清除元素的下面。"><a href="#六、重复文字的BUG在某些比较复杂的排版中，有时候浮动元素的最后一些字符会出现在clear清除元素的下面。" class="headerlink" title="六、重复文字的BUG在某些比较复杂的排版中，有时候浮动元素的最后一些字符会出现在clear清除元素的下面。"></a>六、重复文字的BUG在某些比较复杂的排版中，有时候浮动元素的最后一些字符会出现在clear清除元素的下面。</h3><p>解决方法如下：1.确保元素都带有display:inline<br>2.在最后一个元素上使用“margin-right:-3px<br>3.为浮动元素的最后一个条目加上条件注释，&lt;!–[if !IE]&gt;xxx&lt;![endif]–&gt;<br>4.在容器的最后元素使用一个空白的div，为这个div指定不超过容器的宽度。</p>
 <h3 id="七、IE6中-z-index失效具体BUG为，元素的父级元素设置的z-index为1，那么其子级元素再设置z-index时会失效，"><a href="#七、IE6中-z-index失效具体BUG为，元素的父级元素设置的z-index为1，那么其子级元素再设置z-index时会失效，" class="headerlink" title="七、IE6中 z-index失效具体BUG为，元素的父级元素设置的z-index为1，那么其子级元素再设置z-index时会失效，"></a>七、IE6中 z-index失效具体BUG为，元素的父级元素设置的z-index为1，那么其子级元素再设置z-index时会失效，</h3><p>其层级会继承父级元素的设置，造成某些层级调整上的BUG原因：z-index起作用有个小小前提，<br>就是元素的position属性要 是relative，absolute或是fixed。<br>解决方案：1.position:relative改为position:absolute；2.去除浮动；3.浮动元素添加position属性（如relative，absolute等）</p>
 <p><strong>总结IE6：实际上中，很多BUG的解决方法都可以使用display:inline、font-size:0、float解决。<br>因此我们在书写代码时要记住，一旦使用了float浮动，就为元素增加一个display:inline样式，可以有效的避免浮动造成的样式错乱问题。<br>使用空DIV时，为了避免其高度影响布局美观，也可以为其加上font-size:0 这样就很容易避免一些兼容上的问题。</strong></p>
-<h1 id="js方面："><a href="#js方面：" class="headerlink" title="js方面："></a>js方面：</h1><p>ie7之前 不可以用 setAttribute<br>ie8之前不能用indexOf方法<br>event的x,y在IE中支持，pageX和pageY在Firefox中支持<br>获取目标元素的方法也不同，标准浏览器是event.target，而IE下是event.srcElement<br>获得DOM节点的父节点、子节点的方式不同：<br>其他浏览器：parentNode  parentNode.childNodes<br>IE：parentElement parentElement.children</p>
-<p>ie9之前的浏览器不可以使用delete删除在window上定义的属性。<br>ie5之前的浏览器不能用getelementbyid   可以是使用document.all来代替</p>
-<p>ff用screenX screenY  其他用screenLeft screenTop</p>
+<h1 id="js方面："><a href="#js方面：" class="headerlink" title="js方面："></a>js方面：</h1><ul>
+<li>ie7之前 不可以用 setAttribute</li>
+<li>ie8之前不能用indexOf方法</li>
+<li>event的x,y在IE中支持，pageX和pageY在Firefox中支持</li>
+<li>获取目标元素的方法也不同，标准浏览器是event.target，而IE下是event.srcElement</li>
+<li><p>获得DOM节点的父节点、子节点的方式不同：<br>其他浏览器：parentNode  parentNode.childNodes<br>IE：parentElement parentElement.children</p>
+</li>
+<li><p>ie9之前的浏览器不可以使用delete删除在window上定义的属性。</p>
+</li>
+<li>ie5之前的浏览器不能用getelementbyid   可以是使用document.all来代替</li>
+<li>ff用screenX screenY  其他用screenLeft screenTop</li>
+<li>在ie严格模式下 一个对象不能重复命名属性 </li>
+</ul>
 
       
     </div>
@@ -358,14 +393,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/20/2048/" rel="next" title="2048游戏">
+                <i class="fa fa-chevron-left"></i> 2048游戏
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/20/2048/" rel="prev" title="2048游戏">
-                2048游戏 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/23/html/" rel="prev" title="js事件委托&jquery事件委托">
+                js事件委托&jquery事件委托 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -436,7 +475,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -445,7 +484,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
