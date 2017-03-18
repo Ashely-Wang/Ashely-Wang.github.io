@@ -96,7 +96,7 @@ inherit：从父元素继承。">
 content-box：这是由 CSS2规定的宽度高度行为。宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框。
 border-box：为元素设定的宽度和高度决定了元素的边框盒。就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。
 inherit：从父元素继承。">
-<meta property="og:updated_time" content="2017-03-18T04:26:17.891Z">
+<meta property="og:updated_time" content="2017-03-18T07:03:24.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用css属性">
 <meta name="twitter:description" content="box-sizing:
@@ -351,7 +351,30 @@ inherit：从父元素继承。">
 <li>border-box：为元素设定的宽度和高度决定了元素的边框盒。就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</li>
 <li>inherit：从父元素继承。</li>
 </ul>
-
+<h3 id="transform"><a href="#transform" class="headerlink" title="transform:"></a>transform:</h3><p><em>　transform ： none | transform-function [ transform-function ]</em> <br><br>none表示不变换 transform-function表示一个或多个变换函数 以空格分开，比如rotate scale translate </p>
+<ul>
+<li>兼容性写法：<br>  //Mozilla内核浏览器：firefox3.5+<br>  -moz-transform: rotate | scale | skew | translate ;<br>  //Webkit内核浏览器：Safari and Chrome<br>  -webkit-transform: rotate | scale | skew | translate ;<br>  //Opera<br>  -o-transform: rotate | scale | skew | translate ;<br>  //IE9<br>  -ms-transform: rotate | scale | skew | translate ;<br>  //W3C标准<br>  transform: rotate | scale | skew | translate ;<h4 id="旋转rotate"><a href="#旋转rotate" class="headerlink" title="旋转rotate"></a>旋转rotate</h4>rotate(angle) ：通过指定的角度参数对原元素指定一个2D rotation（2D 旋转），需先有transform-origin属性的定义。transform-origin定义的是旋转的基点，其中angle是指旋转角度，如果设置的值为正数表示顺时针旋转，如果设置的值为负数，则表示逆时针旋转。如：transform:rotate(30deg)<h4 id="移动translate"><a href="#移动translate" class="headerlink" title="移动translate"></a>移动translate</h4>移动translate我们分为三种情况：translate(x,y)水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动）；translateX(x)仅水平方向移动（X轴移动）；translateY(Y)仅垂直方向移动（Y轴移动），具体使用方法如下：</li>
+<li>1、translate(translation-value[, translation-value]) ：通过矢量[tx, ty]指定一个2D translation，tx 是第一个过渡值参数，ty 是第二个过渡值参数选项。如果 未被提供，则ty以 0 作为其值。也就是translate(x,y),它表示对象进行平移，按照设定的x,y参数值,当值为负数时，反方向移动物体，其基点默认为元素 中心点，也可以根据transform-origin进行改变基点。如transform:translate(100px,20px) 向右100 向下20</li>
+<li>2、translateX(translation-value) ： 通过给定一个X方向上的数目指定一个translation。只向x轴进行移动元素，同样其基点是元素中心点，也可以根据transform-origin改变基点位置。如：transform:translateX(100px) 向右100px</li>
+<li>3、translateY(translation-value) ：通过给定Y方向的数目指定一个translation。只向Y轴进行移动，基点在元素心点，可以通过transform-origin改变基点位置。如：transform:translateY(20px)向下20px<h4 id="缩放-scale"><a href="#缩放-scale" class="headerlink" title="缩放 scale"></a>缩放 scale</h4>缩放scale和移动translate是极其相似，他也具有三种情况：scale(x,y)使元素水平方向和垂直方向同时缩放（也就是X轴和Y轴同时缩放）；scaleX(x)元素仅水平方向缩放（X轴缩放）；scaleY(y)元素仅垂直方向缩放（Y轴缩放），但它们具有相同的缩放中心点和基数，其中心点就是元素的中心位置，缩放基数为1，如果其值大于1元素就放大，反之其值小于1，元素缩小，具体使用方法：</li>
+<li>1、scale(number　[, number])：提供执行[sx,sy]缩放矢量的两个参数指定一个2D scale（2D缩放）。如果第二个参数未提供，则取与第一个参数一样的值。scale(X,Y)是用于对元素进行缩放，可以通过transform-origin对元素的基点进行设置，同样基点在元素中心位置；基中X表示水平方向缩放的倍数，Y表示垂直方向的缩放倍数，而Y是一个可选参数，如果没有设置Y值，则表示X，Y两个方向的缩放倍数是一样的。并以X为准。如：transform:scale(2,1.5)</li>
+<li>2、scaleX(number) ： 使用 [sx,1] 缩放矢量执行缩放操作，sx为所需参数。scaleX表示元素只在X轴(水平方向)缩放元素，他的默认值是(1,1)，其基点一样是在元素的中心位置，我们同样是通过transform-origin来改变元素的基点。如：transform:scaleX(2）</li>
+<li>3、scaleY(number) ： 使用 [1,sy] 缩放矢量执行缩放操作，sy为所需参数。scaleY表示元素只在Y轴（垂直方向）缩放元素，其基点同样是在元素中心位置，可以通过transform-origin来改变元素的基点。如transform:scaleY(2)<h4 id="扭曲-skew"><a href="#扭曲-skew" class="headerlink" title="扭曲 skew"></a>扭曲 skew</h4>扭曲skew和translate、scale一样同样具有三种情况：skew(x,y)使元素在水平和垂直方向同时扭曲（X轴和Y轴同时按一定的角度值进行扭曲变形）；skewX(x)仅使元素在水平方向扭曲变形（X轴扭曲变形）；skewY(y)仅使元素在垂直方向扭曲变形（Y轴扭曲变形），具体使用如下：</li>
+<li>1、skew(<angle> [, <angle>]) ：X轴Y轴上的skew transformation（斜切变换）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则值为0，也就是Y轴方向上无斜切。skew是用来对元素进行扭曲变行，第一个参数是水平方向扭曲角度，第二个参数是垂直方向扭曲角度。其中第二个参数是可选参数，如果没有设置第二个参数，那么Y轴为0deg。同样是以元素中心为基点，我们也可以通过transform-origin来改变元素的基点位置。如：transform:skew(30deg,10deg)</angle></angle></li>
+<li>2、skewX(<angle>) ： 按给定的角度沿X轴指定一个skew transformation（斜切变换）。skewX是使元素以其中心为基点，并在水平方向（X轴）进行扭曲变行，同样可以通过transform-origin来改变元素的基点。如：transform:skewX(30deg)</angle></li>
+<li>3、skewY(<angle>) ： 按给定的角度沿Y轴指定一个skew transformation（斜切变换）。skewY是用来设置元素以其中心为基点并按给定的角度在垂直方向（Y轴）扭曲变形。同样我们可以通过transform-origin来改变元素的基点。如：transform:skewY（10deg）</angle></li>
+</ul>
+<h4 id="改变中心基点的方法："><a href="#改变中心基点的方法：" class="headerlink" title="改变中心基点的方法："></a>改变中心基点的方法：</h4><pre><code>//Mozilla内核浏览器：firefox3.5+
+-moz-transform-origin: x y;
+//Webkit内核浏览器：Safari and Chrome
+-webkit-transform-origin: x y;
+//Opera
+-o-transform-origin: x y ;
+//IE9
+-ms-transform-origin: x y;
+//W3C标准
+transform-origin: x y ;
+</code></pre>
       
     </div>
 
@@ -501,7 +524,7 @@ inherit：从父元素继承。">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing"><span class="nav-text">box-sizing:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing"><span class="nav-text">box-sizing:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transform"><span class="nav-text">transform:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转rotate"><span class="nav-text">旋转rotate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动translate"><span class="nav-text">移动translate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缩放-scale"><span class="nav-text">缩放 scale</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扭曲-skew"><span class="nav-text">扭曲 skew</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改变中心基点的方法："><span class="nav-text">改变中心基点的方法：</span></a></li></ol></li></ol></div>
             
 
           </div>

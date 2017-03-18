@@ -238,7 +238,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/18/flex/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/flex/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="一只大肉包">
@@ -263,8 +263,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/18/flex/" itemprop="url">
-                  Untitled
+                <a class="post-title-link" href="/2017/03/11/flex/" itemprop="url">
+                  Flex
                 </a>
               
             
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T14:42:55+08:00">
-                2017-03-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T09:09:55+08:00">
+                2017-03-11
               </time>
             
 
@@ -290,6 +290,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -318,7 +340,103 @@
       
         
           
-            
+            <p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br>任何一个容器都可以指定为Flex布局,包括行内元素。（可以display：inline-flex）<br>注意Webkit内核的浏览器，必须加上-webkit前缀。（ display: -webkit-flex;）</p>
+<pre><code>        .container{
+        display: flex;        
+        /*主轴方向 row column row-reverse column-reverse*/
+        flex-direction: row;
+
+        /*换行 nowrap wrap wrap-reverse*/
+        flex-wrap: wrap;
+
+        /*整体：主轴方向上项目的排列 flex-start flex-end center space-between space-around
+        当主轴是row时就是说 这几个div都在左边还是右边还是居中等*/
+        justify-content: center;
+
+        /*整体：交叉轴方向上项目的排列 flex-start flex-end center space-between space-around 注意要是多条交叉轴才有效 当主轴是row时就是说 这几行都在上面还是下面*/
+        align-content: center;
+
+        /*局部：同一主轴 不同交叉轴上的项目对齐方式 flex-start | flex-end | center | baseline | stretch; 当主轴是row时就是说 每一条主轴上的div按照什么对齐方式。上边缘还是下边缘还是居中等 
+        如果只有一条交叉轴 相当于align-content*/
+        align-items: flex-start;
+
+        height: 600px;
+        width: 1000px;
+        background-color: pink;
+    }
+    .box1{
+        background-color: black;
+        margin: 10px;
+        height: 100px;
+        width: 100px;
+        color:white;
+        text-align: center;
+        font-size: 18px;
+    }
+    .box2{
+        background-color: white;
+        margin: 10px;
+        height: 120px;
+        width: 140px;
+        color:black;
+        text-align: center;
+        font-size: 18px;
+    }
+    #b3{
+        /*数值越小 越靠前 默认为0*/
+        order: -1;
+
+        /*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。 也就是说 不会超出固定空间*/
+        flex-grow: 1;
+
+        /*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。*/
+        flex-shrink: 2;
+
+        /*定义了在分配多余空间之前 项目占据的主轴空间 默认auto 就是原本的大小*/
+        flex-basis: 100px;
+
+        /*上述三个属性的简写*/
+        flex: 1 2 100px;
+
+        /*align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。*/
+        align-self: center;
+    }
+    .czjz{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        /*只有一条交叉轴*/
+        align-items: center;
+        background-color: pink;
+        height: 100px;
+        width: 100px;
+
+    }
+    .son{
+        height:60px;
+        width: 60px;
+        background-color: blue;
+    }
+
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;2&lt;/div&gt;
+    &lt;div class=&quot;box1&quot; id=&quot;b3&quot;&gt;3&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;4&lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;5&lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;6&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;7&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;8&lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;9&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 构建一个垂直居中的块 --&gt;
+&lt;div class=&quot;czjz&quot;&gt;
+    &lt;div class=&quot;son&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
           
         
       
