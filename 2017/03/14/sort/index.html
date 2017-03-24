@@ -84,22 +84,37 @@
 
 
 
-<meta name="description" content="Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局,包括行内元素。（可以display：inline-flex）注意Webkit内核的浏览器，必须加上-webkit前缀。（ display: -webkit-flex;）
-        .container{
-        display: flex;">
+<meta name="description" content="&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+function ArrayList(){
+    var array = []; 
+    this.insert = function(item){ 
+        array.push(item);
+    };
+    this.toString= function(){ 
+        r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flex">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/flex/index.html">
+<meta property="og:title" content="几种基本排序方法">
+<meta property="og:url" content="http://yoursite.com/2017/03/14/sort/index.html">
 <meta property="og:site_name" content="唯知之也">
-<meta property="og:description" content="Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局,包括行内元素。（可以display：inline-flex）注意Webkit内核的浏览器，必须加上-webkit前缀。（ display: -webkit-flex;）
-        .container{
-        display: flex;">
-<meta property="og:updated_time" content="2017-03-18T09:11:08.251Z">
+<meta property="og:description" content="&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+function ArrayList(){
+    var array = []; 
+    this.insert = function(item){ 
+        array.push(item);
+    };
+    this.toString= function(){ 
+        r">
+<meta property="og:updated_time" content="2017-03-24T07:54:33.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flex">
-<meta name="twitter:description" content="Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局,包括行内元素。（可以display：inline-flex）注意Webkit内核的浏览器，必须加上-webkit前缀。（ display: -webkit-flex;）
-        .container{
-        display: flex;">
+<meta name="twitter:title" content="几种基本排序方法">
+<meta name="twitter:description" content="&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+function ArrayList(){
+    var array = []; 
+    this.insert = function(item){ 
+        array.push(item);
+    };
+    this.toString= function(){ 
+        r">
 
 
 
@@ -127,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/11/flex/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/sort/"/>
 
 
 
 
 
-  <title> Flex | 唯知之也 </title>
+  <title> 几种基本排序方法 | 唯知之也 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -246,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/flex/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/sort/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="一只大肉包">
@@ -270,7 +285,7 @@
             
             
               
-                Flex
+                几种基本排序方法
               
             
           </h1>
@@ -285,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T09:09:55+08:00">
-                2017-03-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T02:40:25+08:00">
+                2017-03-14
               </time>
             
 
@@ -308,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -343,102 +358,145 @@
       
 
       
-        <p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br>任何一个容器都可以指定为Flex布局,包括行内元素。（可以display：inline-flex）<br>注意Webkit内核的浏览器，必须加上-webkit前缀。（ display: -webkit-flex;）</p>
-<pre><code>        .container{
-        display: flex;        
-        /*主轴方向 row column row-reverse column-reverse*/
-        flex-direction: row;
+        <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+function ArrayList(){
+    var array = []; 
+    this.insert = function(item){ 
+        array.push(item);
+    };
+    this.toString= function(){ 
+        return array.join();
+    };
+    var swap = function(index1, index2){
+        var aux = array[index1];
+        array[index1] = array[index2];
+        array[index2] = aux;
+    };
+    //冒泡排序
+    this.bubble = function(){
+        var length = array.length;
+        for (var i=0; i&lt;length; i++){
+            for (var j=0; j&lt;length-1-i; j++ ){ //去掉已经排好的 
+                if (array[j] &gt; array[j+1]){
+                    swap(j, j+1);
+                }
+            }
+        }
+    };
+    //选择排序
+    this.selection = function(){
+        var length = array.length;
+        var min;
+        for(var i=0;i&lt;length;i++){ //循环求第i小的数放在第i个位置
+            min=i;
+            for (var j = i; j &lt; length; j++) {
+                if (array[j]&lt;array[min]) {
+                    min=j;
 
-        /*换行 nowrap wrap wrap-reverse*/
-        flex-wrap: wrap;
-
-        /*整体：主轴方向上项目的排列 flex-start flex-end center space-between space-around
-        当主轴是row时就是说 这几个div都在左边还是右边还是居中等*/
-        justify-content: center;
-
-        /*整体：交叉轴方向上项目的排列 flex-start flex-end center space-between space-around 注意要是多条交叉轴才有效 当主轴是row时就是说 这几行都在上面还是下面*/
-        align-content: center;
-
-        /*局部：同一主轴 不同交叉轴上的项目对齐方式 flex-start | flex-end | center | baseline | stretch; 当主轴是row时就是说 每一条主轴上的div按照什么对齐方式。上边缘还是下边缘还是居中等 
-        如果只有一条交叉轴 相当于align-content*/
-        align-items: flex-start;
-
-        height: 600px;
-        width: 1000px;
-        background-color: pink;
-    }
-    .box1{
-        background-color: black;
-        margin: 10px;
-        height: 100px;
-        width: 100px;
-        color:white;
-        text-align: center;
-        font-size: 18px;
-    }
-    .box2{
-        background-color: white;
-        margin: 10px;
-        height: 120px;
-        width: 140px;
-        color:black;
-        text-align: center;
-        font-size: 18px;
-    }
-    #b3{
-        /*数值越小 越靠前 默认为0*/
-        order: -1;
-
-        /*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。 也就是说 不会超出固定空间*/
-        flex-grow: 1;
-
-        /*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。*/
-        flex-shrink: 2;
-
-        /*定义了在分配多余空间之前 项目占据的主轴空间 默认auto 就是原本的大小*/
-        flex-basis: 100px;
-
-        /*上述三个属性的简写*/
-        flex: 1 2 100px;
-
-        /*align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。*/
-        align-self: center;
-    }
-    .czjz{
-        margin-top: 20px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        /*只有一条交叉轴*/
-        align-items: center;
-        background-color: pink;
-        height: 100px;
-        width: 100px;
-
-    }
-    .son{
-        height:60px;
-        width: 60px;
-        background-color: blue;
-    }
+            }
+            if(i!=min){
+                swap(i,min);
+            }
+        }
+    };
+    //插入排序
+    this.insertion = function(){
+        var length = array.length; 
+        for (var i = 1; i &lt; length; i++) {//假设第一个数是排好的
+            var j=i,temp=array[i]; //temp是要插入的数
+            while(j&gt;0&amp;&amp;array[j-1]&gt;temp){//如果前一个数大于要插入的数
+                array[j]=array[j-1]; //把前一个数向后一个位置
+                j--; //一直比较 直到比较到第一个数字或者适合的位置
+            }
+            array[j]=temp;  //把这个数放到合适的位置上 
+        }
+    };
 
 
-&lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;box1&quot;&gt;1&lt;/div&gt;
-    &lt;div class=&quot;box2&quot;&gt;2&lt;/div&gt;
-    &lt;div class=&quot;box1&quot; id=&quot;b3&quot;&gt;3&lt;/div&gt;
-    &lt;div class=&quot;box2&quot;&gt;4&lt;/div&gt;
-    &lt;div class=&quot;box1&quot;&gt;5&lt;/div&gt;
-    &lt;div class=&quot;box1&quot;&gt;6&lt;/div&gt;
-    &lt;div class=&quot;box2&quot;&gt;7&lt;/div&gt;
-    &lt;div class=&quot;box2&quot;&gt;8&lt;/div&gt;
-    &lt;div class=&quot;box1&quot;&gt;9&lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- 构建一个垂直居中的块 --&gt;
-&lt;div class=&quot;czjz&quot;&gt;
-    &lt;div class=&quot;son&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
+    /*性能较好的排序算法 时间复杂度O(nlogn)*/
+
+    //归并排序
+    //其实这个就是把一个数组拆成一个个的数 两个两个排序 再连起来。
+    this.mergeSort = function(){
+        array = mergeSortRec(array);
+    };
+    var mergeSortRec = function(array){
+        var length = array.length; 
+        if (length===1) {return array;}
+        var mid = Math.floor(length/2);
+        var left = array.slice(0,mid);
+        var right = array.slice(mid,length);
+        return merge(mergeSortRec(left),mergeSortRec(right));
+    };
+    var merge = function(left,right){
+        var result = [];
+        var l=0,r=0;
+        while(l&lt;left.length&amp;&amp;r&lt;right.length){
+            if (left[l]&lt;right[r]) {
+                result.push(left[l]);
+                l++;
+            }else{
+                result.push(right[r]);
+                r++;
+            } 
+        }  //例left[3,6] right[2,9]
+           //left[0]&gt;right[0]所以2进栈 r=1
+           //left[0]&lt;right[1] 3进栈 l=1
+           //left[1]&lt;right[1] 6进栈 l=2  
+           //结束循环
+        while (l &lt; left.length){
+            result.push(left[l++]);
+        } 
+        while (r &lt; right.length){
+            result.push(right[r++]);
+        }//把剩下的right[1]进栈 
+        return result;//得到[2,3,6,9]
+    };
+
+    //快速排序 找一个中间值 比它小的放在左边 比它大的放在右边 再对左右的两个数组继续这样排序。
+    //(1) 首先，从数组中选择中间一项作为主元。(2) 创建两个指针，左边一个指向数组第一个项，右边一个指向数组最后一个项。移动左指针直到我们找到一个比主元大的元素，接着，移动右指针直到找到一个比主元小的元素，然后交换它们，重复这个过程，直到左指针超过了右指针。这个过程将使得比主元小的值都排在主元之前，而比主元大的值都排在主元之后。这一步叫作划分操作。(3) 接着，算法对划分后的小数组（较主元小的值组成的子数组，以及较主元大的值组成的子数组）重复之前的两个步骤，直至数组已完全排序。
+    this.quickSort = function(){
+        quick(array,0,array.length-1);
+    };
+    var quick = function(array,left,right){
+        var index;
+        if (array.length &gt; 1) { 
+            index = partition(array, left, right); 
+            //分之后的左指针索引
+            if (left &lt; index - 1) { 
+                quick(array, left, index - 1);//左半边数组 
+            }
+            if (index &lt; right) {
+                quick(array, index, right);//右半边数组
+            }
+        }
+    };
+    var partition = function(array, left, right) {
+        var pivot = array[Math.floor((right + left) / 2)],
+        i = left, 
+        j = right; 
+        while (i &lt;= j) { 
+            while (array[i] &lt; pivot) {
+                i++;
+            } //移动左指针 直到找到一个比主元大的数
+            while (array[j] &gt; pivot) {
+                j--;
+            }//移动右指针 直到找到一个比主元小的数
+            if (i &lt;= j) {
+                swapQuickStort(array, i, j); //交换
+                i++; //继续找 只要指针不重叠（没有越过主元）
+                j--;
+            }
+        }
+        return i; //返回左指针索引
+    };
+    var swapQuickStort = function(array, index1, index2){
+        var aux = array[index1];
+        array[index1] = array[index2];
+        array[index2] = aux;
+    };
+}
+&lt;/script&gt;
 </code></pre>
       
     </div>
@@ -465,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/04/浏览器问题/" rel="next" title="浏览器内部工作原理">
-                <i class="fa fa-chevron-left"></i> 浏览器内部工作原理
+              <a href="/2017/03/11/flex/" rel="next" title="Flex">
+                <i class="fa fa-chevron-left"></i> Flex
               </a>
             
           </div>
@@ -475,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/14/sort/" rel="prev" title="几种基本排序方法">
-                几种基本排序方法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/14/几种数据结构/" rel="prev" title="几种数据结构的js实现">
+                几种数据结构的js实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

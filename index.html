@@ -238,6 +238,851 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/几种数据结构/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="一只大肉包">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="唯知之也">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="唯知之也" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/14/几种数据结构/" itemprop="url">
+                  几种数据结构的js实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T03:14:05+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+function BinarySearchTree(){
+    var Node = function(key){
+        this.key = key;
+        this.left = null;//左子节点
+        this.right = null;//右子节点
+    };//表示树中的节点
+    var root = null; //表示根节点
+    this.insert = function(key){
+        var newNode = new Node(key);
+        if (root ===null) {
+            root = newNode;
+        }else{
+            insertNode(root,newNode);
+        }
+    };
+    var insertNode = function(node,newNode){
+        if (node.key&gt;newNode.key) {
+            if (node.left===null) {
+                node.left = newNode;
+            }else{
+                //递归调用本身
+                insertNode(node.left,newNode);
+            }
+        }else{
+            if (node.right ===null) {
+                node.right = newNode;
+            }else{
+                insertNode(node.right,newNode);
+            }
+        }
+    };
+    //查找最小值 
+    this.min = function(){
+        return minNode(root);
+    }
+    var minNode = function(node){
+        if (node) {
+            while(node&amp;&amp;node.left!==null){
+                node = node.left; //找最大值同理 变成遍历右子树就好了
+            }
+            return node.key;
+        }
+        return null;
+    };
+    //查找一个特定的值是否存在
+    this.search = function(key){
+        return searchNode(root,key);
+    }
+    var searchNode = function(node,key){
+        if (node===null) {
+            return false;
+        }
+        if (key&lt;node.key) {
+            return searchNode(node.left,key);
+        }else if(key&gt;node.key){
+            return searchNode(node.right,key);
+        }else{
+            return true;
+        }
+    };
+
+}
+&lt;/script&gt;
+</code></pre><h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function Set(){
+        var items = {};
+        //判断是否含有某个值
+        this.has = function(value){
+            return items.hasOwnProperty(value);
+        };
+        //新增
+        this.add = function(value){
+            if (!this.has(value)) {
+                items[value] = value;
+                return true;
+            }
+            return false;
+        };
+        //删除
+        this.remove = function(value){
+            if (this.has(value)) {
+                delete items[value];
+                return true;
+            }
+            return false;
+        };
+        //清除
+        this.clear = function(){
+            items = {};
+        }
+        //条数
+        this.sizeLegacy = function(){
+            var count = 0;
+            for(var prop in items) {
+                if(items.hasOwnProperty(prop)){ 
+                ++count; //{7}
+                }
+                return count;
+            }
+        };
+        //取出所有值
+        this.valuesLegacy = function(){
+            var keys = [];
+            for(var key in items){ //{7}
+            keys.push(key); //{8}
+            }
+            return keys;
+        };
+        //求并集
+        this.union = function(otherSet){
+            var unionSet = {};
+            var values = this.values();
+            for (var i = 0; i &lt; values.length; i++) {
+                unionSet.add(values[i]);
+            }
+            values = otherSet.values();
+            for (var i = 0; i &lt; values.length; i++) {
+                unionSet.add(values[i]);
+            }
+            return unionSet;
+        };
+        //求交集
+        this.intersection = function(otherSet){
+            var intersectionSet = {};
+            var values = otherSet.values();
+            for (var i = 0; i &lt; values.length; i++) {
+                if (this.has(values[i])) {
+                    intersectionSet.add(values[i]);
+                }
+            }
+            return intersectionSet;
+        };
+        //求差集
+        this.difference = function(otherSet){
+            var differenceSet = {};
+            var values = this.values();
+            for (var i = 0; i &lt; values.length; i++) {
+                if (!otherSet.has(values[i])) {
+                    intersectionSet.add(values[i]);
+                }
+            }
+            return differenceSet;
+        };
+        //判断是否为其他集合的子集
+        this.subset = function(otherSet){
+            if (this.size()&gt;otherSet.size()) {
+                return false;
+            }else{
+                var values = this.values();
+                for (var i = 0; i &lt; values.length; i++) {
+                    if (!otherSet.has(values[i])) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        };
+    }
+&lt;/script&gt;
+</code></pre><h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+function LinkedList() {
+    var Node = function(element){ 
+        this.element = element;
+        this.next = null;
+    };
+    var length = 0; 
+    //head 变量作为第一个节点的引用,是 LinkedList 类的私有变量（这意味着它不能在 LinkedList 实例外部被访问和更改，只有通过 LinkedList 实例才可以）。但是，如果我们需要在类的实现外部循环访问列表，
+    //就需要提供一种获取类的第一个元素的方法。
+    var head = null;  
+    //向列表尾部添加一个新的项
+    this.append = function(element){
+        var node = new Node(element),current;
+        if(head === null){ //如果head是null 说明原列表中是没有元素的
+            head = node; //将node作为head 就有了第一个值。
+        }else{
+            //我们只有第一个元素的引用，所以需要遍历所有元素 当某一个元素的next是null时，说明这个元素是最后一个元素
+            current = head;
+            while(current.next){
+                current = current.next;
+            }
+            //找到最后一个元素后，将最后一个元素的next指向node
+            current.next = node;
+        }
+        //修改链表长度
+        length++;
+    };
+    //从列表中移除一项。
+    this.removeAt = function(position){
+        if(position&gt;-1 &amp;&amp; position &lt;length){
+            var current = head;
+            var previous,index = 0 ;
+            //移除第一项
+            if (position==0) {
+                head  = current.next;
+            }else{
+                //遍历链表直到查到想要的那个值
+                while(index ++ &lt; position){
+                    previous = current;
+                    current = current.next;
+                }
+                //如果移除的不是第一项 那么要做的是 把要移除的前一个的next和自己的next链接起来。
+                previous.next = current.next;
+            }
+            length--;
+            return current.element;
+        }
+        //如果不是有效位置 返回null 意味着没有删除元素
+        else{
+            return null;
+        }
+    };
+    //向列表的特定位置插入一个新的项。
+    this.insert = function(position, element){
+        if(position&gt;=0 &amp;&amp; position&lt;=length){
+            var node = new Node(element);
+            var current = head,previous,index=0;
+            //在第一个位置添加 直接把插入节点的next指向原head就可以了。
+            if (position===0) {
+                node.next = current;
+                head = node;
+            }else{
+                //遍历查找相应位置
+                while(index++&lt;position){
+                    previous = current;
+                    current = current.next;
+                }
+                //current是想要插的位置，所以把插入节点的next指向原位置上的节点
+                node.next = current;
+                previous.next  = node;
+            }
+            length++;
+            return true;
+        }else{
+            //位置越界
+            return false;
+        }
+    };
+    //返回元素在列表中的索引。如果列表中没有该元素则返回 -1 。
+    this.indexOf = function(element){
+        var current = head;
+        var index = 0;
+        while(current){
+            if(current.element === element){
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    };
+    //根据元素值删除元素
+    this.remove = function(element){
+        var index = this.indexOf(element);
+        return this.removeAt(index);
+    }
+    //如果链表中不包含任何元素，返回 true ，如果链表长度大于0则返回 false 。
+    this.isEmpty = function() {
+        return length===0;
+    };
+    //返回链表包含的元素个数。与数组的 length 属性类似。
+    this.size = function() {
+        return length;
+    };
+    //由于列表项使用了 Node 类，就需要重写继承自JavaScript对象默认的
+    //toString 方法，让其只输出元素的值。
+    this.toString = function(){
+        var current = head;
+        var string = &apos;&apos;;
+        while(current){
+            string = string+current.element;
+            current = current.next;
+        }
+        return string;
+    };
+}
+var linkedlist = new LinkedList();
+linkedlist.append(&quot;rrr&quot;);
+linkedlist.append(&quot;yyy&quot;);
+linkedlist.append(&quot;uuu&quot;);
+linkedlist.removeAt(1);
+linkedlist.insert(1,&quot;insert&quot;);
+linkedlist.remove(&quot;rrr&quot;);
+console.log(linkedlist.toString()); //insertuuu
+console.log(linkedlist.size());//2
+console.log(linkedlist.isEmpty());//false
+&lt;/script&gt;
+</code></pre><h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+//双向链表
+function LinkedList() {
+    var Node = function(element){ 
+        this.element = element;
+        this.next = null;
+        this.prev = null; //*新增
+    };
+    var length = 0; 
+    //head 变量作为第一个节点的引用,是 LinkedList 类的私有变量（这意味着它不能在 LinkedList 实例外部被访问和更改，只有通过 LinkedList 实例才可以）。但是，如果我们需要在类的实现外部循环访问列表，
+    //就需要提供一种获取类的第一个元素的方法。
+    var head = null;  
+    //用于保存列表最后一项
+    var tail = null;
+    //从列表中移除一项。
+    this.removeAt = function(position){
+        if(position&gt;-1 &amp;&amp; position &lt;length){
+            var current = head;
+            var previous,index = 0 ;
+            //如果是第一项
+            if (position===0) {
+                head = current.next;
+                if (length==1) {
+                    tail = null;
+                }else{
+                    head.prev = null;
+                }
+                //如果是最后一项
+            }else if(position===length-1){
+                current = tail;
+                tail = current.prev;
+                tail.next = null;
+                //是其他位置
+            }else{
+                while(index++&lt;position){
+                    previous = current;
+                    current = current.next;
+                }
+                //将前一个与下一个链接起来
+                previous.next = current.next;
+                current.next.prev = previous;
+            }
+            length--;
+            return current.element;
+        }
+        //如果不是有效位置 返回null 意味着没有删除元素
+        else{
+            return null;
+        }
+    };
+    //向双向链表的特定位置插入一个新的项。
+    this.insert = function(position, element){
+        if(position&gt;=0 &amp;&amp; position&lt;=length){
+            var node = new Node(element);
+            var current = head,previous,index=0;
+            //在起点插入
+            if (position===0){
+                if (!head) {
+                    head = node;
+                    tail = node;
+                }else{
+                    node.next = current;
+                    current.prev = node;
+                    head = node ;
+                }
+                //在结尾处插入
+            }else if (position===length) {
+                current = tail;
+                current.next = node;
+                node.prev = current;
+                tail = node;
+                //在其他位置插入
+            }else{
+                while(index++&lt;position){
+                    previous = current;
+                    current = current.next;
+                }
+                node .next = current;
+                previous.next = node;
+                current.prev = node;
+                node.prev = previous;
+            }
+            length++;
+            return true;
+
+        }else{
+            //位置越界
+            return false;
+        }
+    };
+    //返回元素在列表中的索引。如果列表中没有该元素则返回 -1 。
+    this.indexOf = function(element){
+        var current = head;
+        var index = 0;
+        while(current){
+            if(current.element === element){
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    };
+    //根据元素值删除元素
+    this.remove = function(element){
+        var index = this.indexOf(element);
+        return this.removeAt(index);
+    }
+    //如果链表中不包含任何元素，返回 true ，如果链表长度大于0则返回 false 。
+    this.isEmpty = function() {
+        return length===0;
+    };
+    //返回链表包含的元素个数。与数组的 length 属性类似。
+    this.size = function() {
+        return length;
+    };
+    //由于列表项使用了 Node 类，就需要重写继承自JavaScript对象默认的
+    //toString 方法，让其只输出元素的值。
+    this.toString = function(){
+        var current = head;
+        var string = &apos;&apos;;
+        while(current){
+            string = string+current.element;
+            current = current.next;
+        }
+        return string;
+    };
+}
+var linkedlist = new LinkedList();
+linkedlist.append(&quot;rrr&quot;);
+linkedlist.append(&quot;yyy&quot;);
+linkedlist.append(&quot;uuu&quot;);
+linkedlist.removeAt(1);
+linkedlist.insert(1,&quot;insert&quot;);
+linkedlist.remove(&quot;rrr&quot;);
+console.log(linkedlist.toString()); //insertuuu
+console.log(linkedlist.size());//2
+console.log(linkedlist.isEmpty());//false
+&lt;/script&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/sort/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="一只大肉包">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="唯知之也">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="唯知之也" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/14/sort/" itemprop="url">
+                  几种基本排序方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T02:40:25+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+function ArrayList(){
+    var array = []; 
+    this.insert = function(item){ 
+        array.push(item);
+    };
+    this.toString= function(){ 
+        return array.join();
+    };
+    var swap = function(index1, index2){
+        var aux = array[index1];
+        array[index1] = array[index2];
+        array[index2] = aux;
+    };
+    //冒泡排序
+    this.bubble = function(){
+        var length = array.length;
+        for (var i=0; i&lt;length; i++){
+            for (var j=0; j&lt;length-1-i; j++ ){ //去掉已经排好的 
+                if (array[j] &gt; array[j+1]){
+                    swap(j, j+1);
+                }
+            }
+        }
+    };
+    //选择排序
+    this.selection = function(){
+        var length = array.length;
+        var min;
+        for(var i=0;i&lt;length;i++){ //循环求第i小的数放在第i个位置
+            min=i;
+            for (var j = i; j &lt; length; j++) {
+                if (array[j]&lt;array[min]) {
+                    min=j;
+
+            }
+            if(i!=min){
+                swap(i,min);
+            }
+        }
+    };
+    //插入排序
+    this.insertion = function(){
+        var length = array.length; 
+        for (var i = 1; i &lt; length; i++) {//假设第一个数是排好的
+            var j=i,temp=array[i]; //temp是要插入的数
+            while(j&gt;0&amp;&amp;array[j-1]&gt;temp){//如果前一个数大于要插入的数
+                array[j]=array[j-1]; //把前一个数向后一个位置
+                j--; //一直比较 直到比较到第一个数字或者适合的位置
+            }
+            array[j]=temp;  //把这个数放到合适的位置上 
+        }
+    };
+
+
+    /*性能较好的排序算法 时间复杂度O(nlogn)*/
+
+    //归并排序
+    //其实这个就是把一个数组拆成一个个的数 两个两个排序 再连起来。
+    this.mergeSort = function(){
+        array = mergeSortRec(array);
+    };
+    var mergeSortRec = function(array){
+        var length = array.length; 
+        if (length===1) {return array;}
+        var mid = Math.floor(length/2);
+        var left = array.slice(0,mid);
+        var right = array.slice(mid,length);
+        return merge(mergeSortRec(left),mergeSortRec(right));
+    };
+    var merge = function(left,right){
+        var result = [];
+        var l=0,r=0;
+        while(l&lt;left.length&amp;&amp;r&lt;right.length){
+            if (left[l]&lt;right[r]) {
+                result.push(left[l]);
+                l++;
+            }else{
+                result.push(right[r]);
+                r++;
+            } 
+        }  //例left[3,6] right[2,9]
+           //left[0]&gt;right[0]所以2进栈 r=1
+           //left[0]&lt;right[1] 3进栈 l=1
+           //left[1]&lt;right[1] 6进栈 l=2  
+           //结束循环
+        while (l &lt; left.length){
+            result.push(left[l++]);
+        } 
+        while (r &lt; right.length){
+            result.push(right[r++]);
+        }//把剩下的right[1]进栈 
+        return result;//得到[2,3,6,9]
+    };
+
+    //快速排序 找一个中间值 比它小的放在左边 比它大的放在右边 再对左右的两个数组继续这样排序。
+    //(1) 首先，从数组中选择中间一项作为主元。(2) 创建两个指针，左边一个指向数组第一个项，右边一个指向数组最后一个项。移动左指针直到我们找到一个比主元大的元素，接着，移动右指针直到找到一个比主元小的元素，然后交换它们，重复这个过程，直到左指针超过了右指针。这个过程将使得比主元小的值都排在主元之前，而比主元大的值都排在主元之后。这一步叫作划分操作。(3) 接着，算法对划分后的小数组（较主元小的值组成的子数组，以及较主元大的值组成的子数组）重复之前的两个步骤，直至数组已完全排序。
+    this.quickSort = function(){
+        quick(array,0,array.length-1);
+    };
+    var quick = function(array,left,right){
+        var index;
+        if (array.length &gt; 1) { 
+            index = partition(array, left, right); 
+            //分之后的左指针索引
+            if (left &lt; index - 1) { 
+                quick(array, left, index - 1);//左半边数组 
+            }
+            if (index &lt; right) {
+                quick(array, index, right);//右半边数组
+            }
+        }
+    };
+    var partition = function(array, left, right) {
+        var pivot = array[Math.floor((right + left) / 2)],
+        i = left, 
+        j = right; 
+        while (i &lt;= j) { 
+            while (array[i] &lt; pivot) {
+                i++;
+            } //移动左指针 直到找到一个比主元大的数
+            while (array[j] &gt; pivot) {
+                j--;
+            }//移动右指针 直到找到一个比主元小的数
+            if (i &lt;= j) {
+                swapQuickStort(array, i, j); //交换
+                i++; //继续找 只要指针不重叠（没有越过主元）
+                j--;
+            }
+        }
+        return i; //返回左指针索引
+    };
+    var swapQuickStort = function(array, index1, index2){
+        var aux = array[index1];
+        array[index1] = array[index2];
+        array[index2] = aux;
+    };
+}
+&lt;/script&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/flex/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1840,302 +2685,6 @@ SubType.prototype.sayName = function(){
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/20/svg/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="一只大肉包">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="唯知之也">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="唯知之也" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/20/svg/" itemprop="url">
-                  SVG画一只喵
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-20T22:20:55+08:00">
-                2017-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">true<span class="tag">&lt;<span class="name">title</span>&gt;</span>SVG画一只喵。<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"500"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"200"</span> <span class="attr">cy</span>=<span class="string">"200"</span> <span class="attr">r</span>=<span class="string">"50"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"180"</span> <span class="attr">cy</span>=<span class="string">"185"</span> <span class="attr">r</span>=<span class="string">"5"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: green"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"220"</span> <span class="attr">cy</span>=<span class="string">"185"</span> <span class="attr">r</span>=<span class="string">"5"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: green"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"200,150 180,110 150,188"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"200,150 220,110 250,188"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"200"</span> <span class="attr">cy</span>=<span class="string">"200"</span> <span class="attr">r</span>=<span class="string">"5"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: pink"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"260,220 202,202 260,180"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"140,180 202,202 140,220"</span> <span class="attr">style</span>=<span class="string">"stroke:black;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"180,225 185,230 216,230 221,225"</span> <span class="attr">style</span>=<span class="string">"stroke:red;fill: none"</span>&gt;</span></div><div class="line">true</div><div class="line"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/24/HTTP状态码/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="一只大肉包">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="唯知之也">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="唯知之也" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/24/HTTP状态码/" itemprop="url">
-                  http状态码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-24T16:09:55+08:00">
-                2016-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>100 Continue  继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息</li>
-<li>200 OK   正常返回信息</li>
-<li>201 Created  请求成功并且服务器创建了新的资源</li>
-<li>202 Accepted  服务器已接受请求，但尚未处理</li>
-<li>301 Moved Permanently  请求的网页已永久移动到新位置</li>
-<li>302 Found  临时性重定向</li>
-<li>303 See Other  临时性重定向，且总是使用 GET 请求新的 URI</li>
-<li>304 Not Modified  自从上次请求后，请求的网页未修改过</li>
-<li>400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求</li>
-<li>401 Unauthorized  请求未授权</li>
-<li>403 Forbidden  禁止访问</li>
-<li>404 Not Found  找不到如何与 URI 相匹配的资源</li>
-<li>500 Internal Server Error  最常见的服务器端错误</li>
-<li>503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2183,7 +2732,7 @@ SubType.prototype.sayName = function(){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
